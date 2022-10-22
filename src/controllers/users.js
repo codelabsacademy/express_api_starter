@@ -11,13 +11,12 @@ export const getAllUsers = (req, res, next) => {
 
 export const addUser = (req, res, next) => {
     try {
-        const username = req.body.username;
-        const email = req.body.email;
+        const { username, email } = req.body;
         if (!username) {
-            res.status(400).json({ message: "username is missing" });
+            throw new Error("username is missing");
         }
         if (!email) {
-            res.status(400).json({ message: "email is missing" });
+            throw new Error("email is missing");
         }
 
         const newUser = service.createUser(username, email);
