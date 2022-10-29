@@ -1,7 +1,7 @@
 import express from 'express';
 import mainRouter from './routers/index.js';
 import errorHandler from './utils/error.js';
-import { port } from '../utils/config.js';
+import { port } from './utils/config.js';
 import './utils/db.js';
 
 

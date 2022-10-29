@@ -1,28 +1,22 @@
-// will include database connection in upcomming version
+import { UserModel } from '../models/User.js';
 
 
 
-const findAllUsers = () => {
-    return [
-        {
-            username: "username 1",
-            email: "email 1"
-        },
-        {
-            username: "username 2",
-            email: "email 2"
-        },
-    ];
+const findAllUsers = async () => {
+    const users = await UserModel.find().select({ _id: 0, email: 1, username: 1 });
+    return users;
 };
 
-const createUser = (username, email) => {
+const createUser = async (username, email) => {
 
     const newUser = {
         username: username,
         email: email
     };
 
-    return newUser;
+    const newlyCreatedUser = await UserModel.create(newUser).select({ _id: 0, email: 1, username: 1 });
+
+    return newlyCreatedUser;
 }
 
 

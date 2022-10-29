@@ -30,7 +30,7 @@ mongoose.connection.on('disconnected', () => {
     console.log("Mongoose disconncted from database");
 });
 
-process.on('SIGNIT', () => {
+process.on('SIGINT', () => {
     console.log("Application stopped");
     mongoose.connection.close(() => {
         console.log("connection closed");

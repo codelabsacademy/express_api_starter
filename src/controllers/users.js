@@ -1,15 +1,15 @@
 import service from '../services/users.js';
 
-export const getAllUsers = (req, res, next) => {
+export const getAllUsers = async (req, res, next) => {
     try {
-        const users = service.findAllUsers();
+        const users = await service.findAllUsers();
         res.status(200).json(users);
     } catch (err) {
         next(err);
     }
 }
 
-export const addUser = (req, res, next) => {
+export const addUser = async (req, res, next) => {
     try {
         const { username, email } = req.body;
         if (!username) {
@@ -19,7 +19,7 @@ export const addUser = (req, res, next) => {
             throw new Error("email is missing");
         }
 
-        const newUser = service.createUser(username, email);
+        const newUser = await service.createUser(username, email);
 
         res.status(201).json(newUser);
 
