@@ -6,12 +6,13 @@ const userSchema = new mongoose.Schema({
     email: {
         type: mongoose.Schema.Types.String,
         required: true,
+        unique: true,
     },
-    username: {
+    password: {
         type: mongoose.Schema.Types.String,
         required: true,
-        unique: true,
-    }
+    },
+
 });
 
 export const UserModel = mongoose.model(document_name, userSchema, collection_name);
