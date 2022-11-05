@@ -2,7 +2,6 @@ import service from '../services/users.js';
 
 export const getAllUsers = async (req, res, next) => {
     try {
-        console.log(req.userId);
         const users = await service.findAllUsers();
         res.status(200).json(users);
     } catch (err) {

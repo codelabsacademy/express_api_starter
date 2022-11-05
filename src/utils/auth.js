@@ -13,7 +13,7 @@ export const validatePassword = (inputPassword, hashedPassword) => {
 }
 
 export const createToken = (user) => {
-    const token = jwt.sign({ id: user._id }, jwt_token, {
+    const token = jwt.sign({ id: user._id, role: user.role }, jwt_token, {
         expiresIn: '10d'
     });
 
@@ -28,9 +28,8 @@ export const auth = () => (req, res, next) => {
         const token = authorization.split(' ')[1];
 
         const decoded = jwt.verify(token, jwt_token);
-        console.log(decoded);
-
         req.userId = decoded.id;
+        req.role = decoded.role;
 
         next();
 

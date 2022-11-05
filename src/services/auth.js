@@ -14,8 +14,20 @@ const createUser = async (user) => {
     return newlyCreatedUser;
 }
 
+const findUserById = async (userId) => {
+    const user = await UserModel.findById(userId);
+    return user;
+}
+
+const validateUser = async (userId) => {
+    return await UserModel.findByIdAndUpdate(userId, {
+        emailVerified: true,
+    }, { new: true });
+}
 
 export default {
     findUserWithEmail,
     createUser,
+    findUserById,
+    validateUser
 }

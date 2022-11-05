@@ -3,3 +3,7 @@ export const db_password = process.env.DB_PASSWORD;
 export const db_cluster = process.env.DB_CLUSTER;
 export const port = process.env.PORT;
 export const jwt_token = process.env.JWT_TOKEN;
+export const email_user = process.env.EMAIL_USER;
+export const email_password = process.env.EMAIL_PASSWORD;
+export const sendgrid_api_key = process.env.SENDGRID_API_KEY;
+export const sender_email = process.env.SENDER_EMAIL;
