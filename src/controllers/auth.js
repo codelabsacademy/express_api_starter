@@ -32,7 +32,6 @@ export const handleSignUp = async (req, res, next) => {
             html: `<strong>Your email verfication code: ${validationCode}</strong>`,
         }
 
-
         await sendEmail(msg);
 
         await service.createUser(newUser);

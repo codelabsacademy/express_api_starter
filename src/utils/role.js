@@ -10,7 +10,6 @@ export const role = (roleCode) => (req, res, next) => {
 
     const priorityRoleCode = priorityMap.get(roleCode);
 
-
     if (
         priorityRoleCode == undefined ||
         req.role == undefined ||

@@ -9,8 +9,8 @@ const app = express();
 app.use(express.json());
 
 const serverPort = port || 5000;
-app.use(mainRouter);
 
+app.use(mainRouter);
 
 app.use(errorHandler);
 

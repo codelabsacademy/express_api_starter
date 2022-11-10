@@ -16,7 +16,6 @@ export const createToken = (user) => {
     const token = jwt.sign({ id: user._id, role: user.role }, jwt_token, {
         expiresIn: '10d'
     });
-
     return token;
 }
 
@@ -26,13 +25,10 @@ export const auth = () => (req, res, next) => {
         if (!authorization) throw new Error('Access denied');
         if (!authorization.startsWith('Bearer ')) throw new Error('Invalid authorization');
         const token = authorization.split(' ')[1];
-
         const decoded = jwt.verify(token, jwt_token);
         req.userId = decoded.id;
         req.role = decoded.role;
-
         next();
-
     } catch (err) {
         if (err.name == 'JsonWebTokenError') {
             if (err.message == 'jwt expired') {
